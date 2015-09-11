@@ -1,0 +1,51 @@
+.sub__nav {
+  @include col(12/12);
+  margin-top: 50px;
+  padding: $base-spacing * 2;
+  background-color: $white;
+
+  .event-type {
+    @include col(12/12);
+    text-align: center;
+
+    @media only screen and (min-device-width: 768px) {
+      @include col(4/12);
+      text-align: center;
+    }
+  }
+
+  .button-group {
+    margin-right: $base-spacing;
+  }
+}
+
+.search {
+  @include col(12/12);
+  position: relative;
+  margin-bottom: $base-spacing * 2;
+
+  @media only screen and (min-device-width: 768px) {
+    @include col(8/12);
+    margin-bottom: 0;
+  }
+
+  @media only screen and (min-device-width: 768px) and (orientation: portrait) {
+    @include col(7/12);
+    margin-bottom: 0;
+  }
+
+  input {
+    position: relative;
+    width: 100%;
+  }
+
+  i {
+    position: absolute;
+    top: 3px;
+    right: $base-spacing;
+    padding: 8px 1px 0 8px;
+    height: 87%;
+    background-color: $white;
+    color: $gray;
+  }
+}

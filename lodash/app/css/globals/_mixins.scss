@@ -1,0 +1,36 @@
+@mixin clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: '';
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin button($top-gradient, $bottom-gradient, $font-color, $shadow-color: '') {
+  background: linear-gradient(to bottom, $top-gradient 0%, $bottom-gradient 100%);
+  box-shadow: 0 2px 0 0 $shadow-color;
+  color: $font-color;
+
+  &:hover {
+    background: linear-gradient(to bottom, $bottom-gradient 0%, $top-gradient 100%);
+    color: $font-color;
+  }
+
+  &:disabled,
+  &--disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+

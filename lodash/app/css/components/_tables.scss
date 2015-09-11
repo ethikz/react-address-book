@@ -1,0 +1,200 @@
+.table-responsive-vertical {
+  padding: 0 1em;
+}
+
+.table {
+  margin-bottom: $base-spacing * 4;
+  max-width: 100%;
+  width: 100%;
+  border: 0;
+  border-collapse: separate;
+  background-color: transparent;
+
+  @media screen and (min-width: 768px) {
+    border-top: $base-border;
+    border-right: $base-border;
+    border-left: $base-border;
+    border-radius: $base-border-radius;
+    background-color: $white;
+  }
+
+  > {
+    thead > tr,
+    tbody > tr,
+    tfoot > tr {
+      border-radius: $base-border-radius;
+      transition: all 0.3s ease;
+    }
+
+    thead,
+    tfoot {
+      display: none;
+      
+      @media screen and (min-width: 768px) {
+        display: table-header-group;
+        border-radius: $base-border-radius;
+        background-color: $gray--10;
+      }
+    }
+    
+    thead > tr > th,
+    tbody > tr > th,
+    tfoot > tr > th,
+    thead > tr > td,
+    tbody > tr > td, 
+    tfoot > tr > td {
+      padding: $base-spacing * 0.75 $base-spacing * 2;
+      border-top: 0;
+      border-radius: $base-border-radius;
+      vertical-align: top;
+      text-align: left;
+      transition: all 0.3s ease;
+      
+      @media screen and (min-width: 768px) {
+        border-radius: 0;
+      }
+    }
+    
+    thead > tr > th {
+      border-bottom: $base-border;
+      color: $gray;
+      vertical-align: bottom;
+      font-weight: 400;
+      
+      &:first-child {
+        border-top-left-radius: $base-border-radius;
+      }
+      
+      &:last-child {
+        border-top-right-radius: $base-border-radius;
+      }
+    }
+    
+    caption + thead > tr:first-child > th,
+    colgroup + thead > tr:first-child > th,
+    caption + thead > tr:first-child > td,
+    colgroup + thead > tr:first-child > td,
+    thead:first-child > tr:first-child > th,
+    thead:first-child > tr:first-child > td {
+      border-top: 0;
+    }
+    
+    tbody {
+      display: block;
+
+      @media screen and (min-width: 768px) {
+        display: table-row-group;
+      }
+
+      + tbody {
+        border-top: 1px solid rgba(0, 0, 0, 0.12);
+      }
+
+      > tr {
+        display: block;
+        margin-bottom: $base-spacing * 2;
+        border: $base-border;
+        border-radius: $base-border-radius;
+
+        @media screen and (min-width: 768px) {
+          display: table-row;
+        }
+
+        &:last-of-type {
+          td:first-child {
+            border-bottom-left-radius: $base-border-radius;
+          }
+          
+          td:last-child {
+            border-bottom-right-radius: $base-border-radius;
+          }
+        }
+        
+        > td {
+          display: block;
+          clear: both;
+          background-color: $white;
+          vertical-align: top;
+          text-align: right;
+          
+          @media screen and (min-width: 768px) {
+            display: table-cell;
+            text-align: left;
+          }
+          
+          &:first-child {
+            span:first-of-type {
+              font-weight: 600;
+            }
+          }
+
+          &:last-child {
+            text-align: right;
+          }
+
+          a {
+            float: left;
+            
+            @media screen and (min-width: 768px) {
+              float: none;
+            }
+          }
+
+          &[data-title]:before {
+            @media screen and (max-width: 768px) {
+              float: left;
+              color: $gray--dark;
+              content: attr(data-title);
+              font-weight: 600;
+              font-size: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .table {
+    background-color: $white;
+  }
+  
+  .no-border {
+    border: 0;
+  }
+}
+
+.table--bordered {
+  > {
+    thead > tr > th,
+    tbody > tr > th,
+    tfoot > tr > th,
+    thead > tr > td,
+    tbody > tr > td,
+    tfoot > tr > td {
+      @media screen and (min-width: 768px) {
+        border-bottom: $base-border;
+      }
+    }
+    
+    thead > tr > {
+      th,
+      td {
+        border-bottom-width: 1px;
+      }
+    }
+
+    tbody > tr > td {
+      border: 0;
+      
+      @media screen and (min-width: 768px) {
+        border-bottom: $base-border;
+      }
+
+      &:last-child {
+        @media screen and (min-width: 768px) {
+          border-bottom: $base-border;
+        }
+      }
+    }
+  }
+}
