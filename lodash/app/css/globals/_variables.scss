@@ -2,9 +2,6 @@
 $blue--light: #157dd9;
 $blue: #065fae;
 $blue--dark: #07559a;
-$green--light: #83ca37;
-$green: #69c00e;
-$green--dark: #48a224;
 $gray--dark: #333;
 $gray: #8b909a;
 $gray--light: #d8dadf;
@@ -43,9 +40,3 @@ $base-border-color: $gray--light;
 $base-border: 1px solid $base-border-color;
 $base-spacing: 0.5em;
 $base-z-index: 0;
-
-.container {
-  @include center(1024px);
-  position: relative;
-  padding: 0 $base-spacing * 2;
-}

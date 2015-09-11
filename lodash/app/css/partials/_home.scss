@@ -1,23 +1,136 @@
 .content {
-  height: 100%;
-}
+  @include col(12/12);
+  background-color: #f1f2f7;
+  min-height: 100%;
 
-.contact-list {
-  @include col(2/12, $gutter: 0);
-  padding: $base-spacing * 2;
-  border-right: $base-border;
-  height: 100%;
-}
-
-.contact-details {
-  @include col(10/12);
-  padding: $base-spacing * 2;
-  border-right: $base-border;
-  height: 100%;
+  @media only screen and (min-width: 928px) {
+    height: 100%;
+  }
 }
 
 .contact-sorting {
   width: 100%;
   text-align: center;
   margin-bottom: $base-spacing * 2;
+}
+
+.contact-sorting__group {
+  @extend %h4;
+  color: $gray;
+  margin-bottom: 0;
+}
+
+.contact-list {
+  @include col(12/12, $gutter: 0);
+  padding: $base-spacing * 2;
+  border-bottom: $base-border;
+
+  @media only screen and (min-width: 928px) {
+    @include col(2/12, $gutter: 0);
+    height: 100%;
+    border-right: $base-border;
+  }
+}
+
+.contact-details {
+  @include col(12/12, $gutter: 0);
+  padding: $base-spacing * 2;
+
+  @media only screen and (min-width: 928px) {
+    @include col(10/12, $gutter: 0);
+    border-right: $base-border;
+    height: 100%;
+  }
+}
+
+.contact-details__img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid $blue--light;
+
+  @media only screen and (min-width: 928px) {
+    display: inline-block;
+    margin-right: $base-spacing * 4;
+  }
+}
+
+.contact-details__info {
+  display: block;
+  text-align: center;
+  vertical-align: top;
+
+  @media only screen and (min-width: 928px) {
+    display: inline-block;
+  }
+
+  h2 {
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+  
+  p {
+    margin: 0;
+  }
+}
+
+.title {
+  @extend %h3;
+  color: $gray;
+}
+
+.contact-education {
+  margin-top: $base-spacing * 4;
+  width: 100%;
+  text-align: center;
+
+  @media only screen and (min-width: 928px) {
+    text-align: left;
+  }
+}
+
+.contact-experience {
+  margin-top: $base-spacing * 2;
+  width: 100%;
+  text-align: center;
+
+  @media only screen and (min-width: 928px) {
+    text-align: left;
+  }
+}
+
+.contact-education__dates,
+.contact-education__info,
+.contact-experience__dates,
+.contact-experience__info {
+  display: block;
+  vertical-align: top;
+
+  @media only screen and (min-width: 928px) {
+    display: inline-block;
+  }
+}
+
+.contact-education__dates,
+.contact-experience__dates {
+  margin: 2px $base-spacing * 3 0 0;
+  text-align: center;
+  font-weight: 500;
+
+  @media only screen and (min-width: 928px) {
+    text-align: left;
+    width: 120px;
+  }
+}
+
+.contact-education__info,
+.contact-experience__info {
+  h5,
+  p {
+    margin: 0;
+  }
+
+  h5 {
+    font-weight: 500;
+  }
 }

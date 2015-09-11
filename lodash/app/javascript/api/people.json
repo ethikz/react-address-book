@@ -2,7 +2,7 @@
   {
     "id": "adam",
     "name": "Adam Wright",
-    "avatar": "http://placecage.com/50/50",
+    "avatar": "http://placecage.com/125/125",
     "email": "adam.wright@mycompany.com",
     "education": [
       {
@@ -17,6 +17,7 @@
       {
         "institution": "Megacorp",
         "startYear": 2001,
+        "endYear": "Present",
         "title": "Software Developer"
       }
     ]
@@ -24,7 +25,7 @@
   {
     "id": "joe",
     "name": "Joe Manfrey",
-    "avatar": "http://placecage.com/50/50",
+    "avatar": "http://placecage.com/125/125",
     "email": "joe.manfrey@mycompany.com",
     "education": [
       {
@@ -39,6 +40,7 @@
       {
         "institution": "Food Inc.",
         "startYear": 1998,
+        "endYear": "Present",
         "title": "Software Developer"
       }
     ]
@@ -46,7 +48,7 @@
   {
     "id": "douglas",
     "name": "Douglas Cho",
-    "avatar": "http://placecage.com/50/50",
+    "avatar": "http://placecage.com/125/125",
     "email": "douglas.cho@mycompany.com",
     "education": [
       {
@@ -61,6 +63,7 @@
       {
         "institution": "Food Inc.",
         "startYear": 1998,
+        "endYear": "Present",
         "title": "Software Developer"
       }
     ]
@@ -68,7 +71,7 @@
   {
     "id": "allison",
     "name": "Allison Murray",
-    "avatar": "http://placecage.com/50/50",
+    "avatar": "http://placecage.com/125/125",
     "email": "allison.murray@mycompany.com",
     "education": [
       {
@@ -83,6 +86,7 @@
       {
         "institution": "United Products",
         "startYear": 1998,
+        "endYear": "Present",
         "title": "Directory of IT"
       }
     ]

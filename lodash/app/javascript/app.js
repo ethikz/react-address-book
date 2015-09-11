@@ -2,36 +2,52 @@ jQuery(function ($, undefined) {
   var contactData,
       API_URL = './javascript/api/people.json';
       sortingTemplate = _.template(
-        '<div class="contact-sorting button-group button-group--horizontal">' +
-          '<div class="button-group__item">' +
-            '<a href="#" class="button button--active sort-asc">Asc</a>' +
-          '</div>' +
-          '<div class="button-group__item">' +
-            '<a href="#" class="button sort-desc">Desc</a>' +
+        '<div class="contact-sorting">' +
+          '<h6>Sorting</h6>' +
+          '<div class="button-group button-group--horizontal">' +
+            '<div class="button-group__item">' +
+              '<a href="#" class="button button--active sort-asc">A-Z</a>' +
+            '</div>' +
+            '<div class="button-group__item">' +
+              '<a href="#" class="button sort-desc">Z-A</a>' +
+            '</div>' +
           '</div>' +
         '</div>'
       ),
       contactListTemplate = _.template(
-        '<div class="contact">' +
+        '<div class="contact-list__item">' +
           '<a href="#" data-id="{{ contacts.id }}">{{ contacts.name }}</a>' +
         '</div>'
       ),
       contactDetailsTemplate = _.template(
-        '<div>' +
-          '<img src="{{ contacts.avatar }}" />' +
-        '</div>' +
-        '<div>{{ contacts.name }}</div>' +
-        '<div>{{ contacts.workExperience[0].title }}</div>' +
-        '<div>919-555-5555</div>' +
-        '<div>' +
+        '<img src="{{ contacts.avatar }}" class="contact-details__img" />' +
+        '<div class="contact-details__info">' +
+          '<h2>{{ contacts.name }}</h2>' +
+          '<p>{{ contacts.workExperience[0].title }}</p>' +
+          '<p>919-555-5555</p>' +
           '<a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a>' +
         '</div>' +
-        '<div>{{ contacts.education[0].startYear }}</div>' +
-        '<div>{{ contacts.education[0].endYear }}</div>'
+        '<div class="contact-education">' +
+          '<p class="title">Education</p>' +
+          '<div class="contact-education__dates">{{ contacts.education[0].startYear }} - {{ contacts.education[0].endYear }}</div>' +
+          '<div class="contact-education__info">' +
+            '<h5>{{ contacts.education[0].institution }}</h5>' +
+            '<p>{{ contacts.education[0].degree }}</p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="contact-experience">' +
+          '<p class="title">Experience</p>' +
+          '<div class="contact-experience__dates">{{ contacts.workExperience[0].startYear }} - {{ contacts.workExperience[0].endYear }}</div>' +
+          '<div class="contact-experience__info">' +
+            '<h5>{{ contacts.workExperience[0].institution }}</h5>' +
+            '<p>{{ contacts.workExperience[0].title }}</p>' +
+          '</div>' +
+        '</div>'
       ),
       contactGroupTemplate = _.template(
-        '<h4>{{ contacts }}</h4>'
+        '<p class="contact-sorting__group">{{ contacts }}</p>'
       );
+  
   
   function getContacts() {
     getJSONP( API_URL ).then(function( data ) {
@@ -41,10 +57,9 @@ jQuery(function ($, undefined) {
   }
 
 
-  // Needs to be refactored so there is only 1 thing happening in this function
+  // Needs to be refactored
   function appendContacts( contacts, sorting ) {
     $('.contact-list').empty();
-    
     $('.contact-list').append(sortingTemplate());
     
     contacts = _.sortBy(contacts, 'id');
@@ -53,38 +68,48 @@ jQuery(function ($, undefined) {
       contacts = contacts.reverse();
     }
     
-    var groupedContacts = _.groupBy(contacts, function(contact) { 
+    var groupedContacts = _.groupBy(contacts, function( contact ) { 
       return contact.name.substr(0,1); 
     });
     
     _.forEach(groupedContacts, function( contacts, key ) {
-      $('.contact-list').append(contactGroupTemplate({contacts: key})).fadeTo('fast', 1);
+      $('.contact-list').append(contactGroupTemplate({
+        contacts: key
+      })).fadeTo('fast', 1);
 
-      _.forEach(contacts, function(contact) {
-        $('.contact-list').append(contactListTemplate({contacts: contact})).fadeTo('fasr', 1);
+      _.forEach(contacts, function( contact ) {
+        $('.contact-list').append(contactListTemplate({
+          contacts: contact
+        })).fadeTo('fasr', 1);
       });
     });
 
-    $(document).on('click', '.contact a', function() {
+    $(document).on('click', '.contact-list__item a', function() {
       $('.contact-details').empty();
       appendContactDetails($(this).attr('data-id'), _.valuesIn(contacts));
     });
   }
 
+
   function appendContactDetails( contactId, contacts ) {
     var selectedContact;
+    
     _.forEach( _.valuesIn(contacts), function( k, v ) {
       if ( contactId == k.id) {
         selectedContact = k;
       }
     });
 
-    $('.contact-details').append(contactDetailsTemplate({contacts: selectedContact})).fadeTo('fast', 1);
+    $('.contact-details').append(contactDetailsTemplate({
+      contacts: selectedContact
+    })).fadeTo('fast', 1);
   }
 
+  
   if ( $('.contact-list').length > 0 ) {
     getContacts();
 
+    // Needs to be refactored
     $(document).on('click', '.button-group__item .button', function() {
       if ( $(this).hasClass('sort-desc') ) {
         $('.contact-list').removeClass('sort-asc').addClass('sort-desc');

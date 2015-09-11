@@ -1,9 +1,5 @@
 exclude:
   - 'app/css/vendor/*'
-  - 'app/css/components/_buttons.scss'
-  - 'app/css/components/_dropdowns.scss'
-  - 'app/css/components/_tables.scss'
-  - 'app/fonts/_icon-font.scss'
 
 linters:
   BangFormat:

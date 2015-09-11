@@ -9,10 +9,8 @@ var gulp = require('gulp'),
 
 var paths = {
   jade: 'app/**/*.jade',
-  icons: 'app/fonts/svg/*.svg',
   scss: 'app/css/**/*.scss',
-  js: 'app/javascript/**/*.js',
-  images: 'app/img/**'
+  js: 'app/javascript/**/*.js'
 };
 
 
@@ -27,40 +25,11 @@ gulp.task('html', function() {
 });
 
 
-// Icon Fonts
-// =======================================================
-
-gulp.task('iconfont', function() {
-  return gulp.src(paths.icons)
-    .pipe(plugin.svgmin())
-    .pipe(plugin.iconfontCss({
-      fontName: 'icon-font',
-      path: 'app/fonts/_icon-font.scss',
-      targetPath: '../../app/css/generated/_icon-font.scss',
-      fontPath: '../fonts/'
-    }))
-    .pipe(plugin.iconfont({
-      fontName: 'icon-font',
-      normalize: true
-    }))
-    .pipe(gulp.dest('build/fonts/'));
-});
-
-gulp.task('copyfonts', function() {
-  return gulp.src(['app/fonts/*.*', '!app/fonts/svg/', '!app/fonts/*.scss'])
-    .pipe(gulp.dest('build/fonts/'));
-});
-
-
-
 // CSS
 // =======================================================
 
-gulp.task('css', ['iconfont'], function() {
-  return gulp.src([
-    paths.scss,
-    'app/css/partials/cart.css'
-  ])
+gulp.task('css', function() {
+  return gulp.src(paths.scss)
     .pipe(plugin.sourcemaps.init())
     .pipe(plugin.sass())
     .pipe(plugin.autoprefixer("last 2 versions"))
@@ -84,36 +53,15 @@ gulp.task('javascript', function() {
     .pipe(gulp.dest('build/javascript/'));
 });
 
-
 gulp.task('json', function() {
   return gulp.src('app/javascript/api/*')
     .pipe(gulp.dest('build/javascript/api/'));
 });
 
 
-// Images
-// =======================================================
-
-gulp.task('optimizeImages', function() {
-  return gulp.src(paths.images)
-    .pipe(plugin.newer('build/img'))
-    .pipe(plugin.imagemin())
-    .pipe(gulp.dest('app/img/'));
-});
-
-gulp.task('cleanImages', ['optimizeImages'], function() {
-  return gulp.src('build/img')
-    .pipe(plugin.clean());
-});
-
-gulp.task('copyImages', ['cleanImages'], function() {
-  return gulp.src(paths.images)
-    .pipe(gulp.dest('build/img'));
-});
-
-
 // Utilities
 // =======================================================
+
 gulp.task('clean', function() {
   return gulp.src(['build/**/*'], {
     read: false
@@ -131,11 +79,9 @@ gulp.task('build', function() {
 
 gulp.task('watch', ['build'], function() {
   gulp.watch(paths.jade, ['html']);
-  gulp.watch(paths.icons, ['css']);
-  gulp.watch([paths.scss, '!app/css/generated/_icon-font.scss'], ['css']);
+  gulp.watch(paths.scss, ['css']);
   gulp.watch(paths.js, ['javascript']);
   gulp.watch('app/javascript/api/*', ['json']);
-  gulp.watch(paths.images, ['copyImages']);
 });
 
 
@@ -153,15 +99,15 @@ gulp.task('connect', function() {
 
 // Deploy
 // =======================================================
+
 gulp.task('deploy', function () {
   gulp.src('./build/**/*')
     .pipe(deploy('https://github.com/ethikz/react-address-book', 'origin'));
 });
 
 
-
 // Tasks
 // =======================================================
 
 gulp.task('default', ['watch', 'connect']);
-gulp.task('compile', ['copyfonts', 'html', 'css', 'javascript', 'copyImages', 'json']);
+gulp.task('compile', ['html', 'css', 'javascript', 'json']);
