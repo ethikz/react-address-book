@@ -8,15 +8,8 @@
 @import 'globals/mixins';
 @import 'globals/typography';
 
-// Icons
-@import 'generated/icon-font';
-
 // Components
 @import 'components/buttons';
-@import 'components/inputs';
-@import 'components/tables';
 
 // Partials
-@import 'partials/mobile-nav';
-@import 'partials/nav';
 @import 'partials/home';

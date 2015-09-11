@@ -160,7 +160,7 @@ gulp.task('watch', ['build'], function() {
 gulp.task('connect', function() {
   plugin.connect.server({
     root: 'build',
-    port: '8002',
+    port: '8003',
     livereload: true
   });
 });
