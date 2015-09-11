@@ -1,0 +1,18 @@
+.content,
+.content > div {
+  height: 100%;
+}
+
+.contact-list {
+  @include col(2/12, $gutter: 0);
+  padding: $base-spacing * 2;
+  border-right: $base-border;
+  height: 100%;
+}
+
+.contact-details {
+  @include col(10/12);
+  padding: $base-spacing * 2;
+  border-right: $base-border;
+  height: 100%;
+}

@@ -1,0 +1,99 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #f1f2f7;
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  line-height: $base-line-height;
+}
+
+%h1,
+h1,
+%h2,
+h2,
+%h3,
+h3,
+%h4,
+h4,
+%h5,
+h5,
+%h6,
+h6 {
+  margin: $base-spacing 0;
+  font-weight: 400;
+}
+
+%h1,
+h1 {
+  font-weight: 300;
+  font-size: $h1-font-size;
+}
+
+%h2,
+h2 {
+  font-weight: 300;
+  font-size: $h2-font-size;
+}
+
+%h3,
+h3 {
+  font-weight: 300;
+  font-size: $h3-font-size;
+}
+
+%h4,
+h4 {
+  font-size: $h4-font-size;
+}
+
+%h5,
+h5 {
+  font-size: $h5-font-size;
+}
+
+%h6,
+h6 {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: $h6-font-size;
+}
+
+ul {
+  margin: 0 auto;
+  list-style-type: none;
+  -webkit-margin-start: 0;
+  -webkit-padding-start: 0;
+  -moz-margin-start: 0;
+  -moz-padding-start: 0;
+}
+
+a {
+  color: $blue--light;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    color: $blue;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 0;
+  }
+}
+
+p {
+  word-wrap: break-word;
+}

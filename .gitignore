@@ -1,0 +1,7 @@
+.DS_Store
+react/node/*
+react/node_modules/*
+react/build/*
+lodash/node/*
+lodash/node_modules/*
+lodash/build/*

@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'icon-font';
+  src: url('../fonts/icon-font.eot');
+  src: url('../fonts/icon-font.eot?#iefix') format('eot'),
+    url('../fonts/icon-font.woff') format('woff'),
+    url('../fonts/icon-font.ttf') format('truetype'),
+    url('../fonts/icon-font.svg#icon-font') format('svg');
+}
+
+%icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: inherit;
+  text-transform: none;
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'icon-font';
+  line-height: 1;
+  speak: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@function icon-char($filename) {
+  $char: '';
+
+
+  @return $char;
+
+  @if $filename == etix-logo {
+    $char: '\E001';
+  }
+}
+
+@mixin icon($filename) {
+  content: icon-char($filename);
+}
+
+
+.icon-etix-logo {
+  @extend %icon;
+  
+  &:before {
+    @include icon(etix-logo);
+  }
+}
+
+%icon-etix-logo {
+  @extend %icon;
+  @include icon(etix-logo);
+}

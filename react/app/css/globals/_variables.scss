@@ -1,0 +1,51 @@
+// Core Colors
+$blue--light: #157dd9;
+$blue: #065fae;
+$blue--dark: #07559a;
+$green--light: #83ca37;
+$green: #69c00e;
+$green--dark: #48a224;
+$gray--dark: #333;
+$gray: #8b909a;
+$gray--light: #d8dadf;
+
+// Shades
+$gray--10: #fafbfc;
+$gray--20: #f0f2f5;
+$white: #fff;
+$black: #000;
+
+// Accent Colors
+$accent-red--light: #bc5656;
+$accent-red: #c00;
+$accent-red--dark: #9b0000;
+
+// Typography
+$base-font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+
+// Font Sizes
+$base-font-size: 14px;
+$small-font-size: 87.5%;
+$h1-font-size: $base-font-size * 2.143;
+$h2-font-size: $base-font-size * 1.857;
+$h3-font-size: $base-font-size * 1.5;
+$h4-font-size: $base-font-size * 1.286;
+$h5-font-size: $base-font-size * 1.143;
+$h6-font-size: $base-font-size * 0.857;
+
+// Line height
+$base-line-height: 1.571;
+$header-line-height: 2.233;
+
+// Other Sizes
+$base-border-radius: 4px;
+$base-border-color: $gray--light;
+$base-border: 1px solid $base-border-color;
+$base-spacing: 0.5em;
+$base-z-index: 0;
+
+.container {
+  @include center(1024px);
+  position: relative;
+  padding: 0 $base-spacing * 2;
+}
