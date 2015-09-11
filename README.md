@@ -11,4 +11,4 @@ You can see the lodash app in the `lodash` folder.  The same goes for the react 
 The react app doesn't have sorting yet.
 
 
-If you are not sure about these steps, need help or something is missing then send me an email at [josh.christensen2@gmail.com](josh.christensen2@gmail.com) to let me know.
+If you are not sure about these steps, need help or something is missing then send me an email at josh ( dot ) christensen2 ( at ) gmail ( dot ) com to let me know.
